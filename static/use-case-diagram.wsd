@@ -1,0 +1,32 @@
+@startuml FlaskAppUseCaseDiagram
+skinparam linetype polyline
+actor User
+actor Bot
+
+left to right direction
+rectangle "Tourist Guide Chat Bot" {
+  User - (Login)
+  User -- (Signup)
+  User - (Logout)
+  User -- (Chat)
+  User -- (New Chat)
+  User -- (Edit Chat Topic)
+  User -- (Delete Chat)
+  User -- (Get Chat Response)
+
+  Bot -- (Provide Chat Response)
+
+
+  (Login) ..> (Retrieve User Data) : <<include>>
+  (Signup) ..> (Store User Data) : <<include>>
+  (Chat) <.. (Retrieve Chat Data) : <<extend>>
+  (Chat) ..> (Store Chat Data) : <<include>>
+  (New Chat) -- (Store Chat Data)
+  (Edit Chat Topic) -- (Store Chat Data)
+  
+  (Get Chat Response) <.. (Retrieve Chat Data) : <<extend>>
+  (Provide Chat Response) ..> (Store Chat Data) : <<include>>
+  
+}
+
+@enduml

@@ -1,0 +1,43 @@
+@startuml FlaskAppSequenceDiagram
+
+actor User
+
+hide footbox
+participant App
+actor Bot
+database Database
+
+User -> App: Access Chat Bot
+activate App #LightGray
+    App -> User: Display Login Page
+    User -> App: Provide Credentials
+    App -> Database: Retrieve User Data
+    activate Database #LightGray
+        Database --> App: User Data
+    deactivate Database
+    
+    App -> User: Login Successful
+    User -> App: Start Chat
+    loop Chat Interaction
+        User -> App: Send Message
+        App -> Database: Store User Message
+        activate Database #LightGray
+            App <-- Database: User Message Stored
+        deactivate Database 
+        App -> Bot: Forward Message
+        activate Bot
+            Bot -> App: Generate Response
+            App -> Database: Store Bot Response
+            activate Database #LightGray
+                App <-- Database: Bot Response Stored
+            deactivate Database
+            App --> User: Display Bot Response
+            User -> App: Send Another Message
+        deactivate Bot
+    end
+   
+    User -> App: Logout
+    App -> User: Logout Successful
+deactivate App
+
+@enduml

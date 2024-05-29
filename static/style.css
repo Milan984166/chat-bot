@@ -1,0 +1,56 @@
+/* Your CSS styles here */
+body, html {
+	height: 100%;
+	margin: 0;
+	background: rgb(44, 47, 59);
+	background: -webkit-linear-gradient(to right, rgb(40, 59, 34), rgb(54, 60, 70), rgb(32, 32, 43));
+	background: linear-gradient(to right, rgb(38, 51, 61), rgb(50, 55, 65), rgb(33, 33, 78));
+}
+
+.chat-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+#chat-messages {
+	max-height: 80%;
+	overflow-y: auto;
+	padding: 10px;
+	border-radius: 15px;
+	background-color: rgba(0, 0, 0, 0.4);
+	width: 80%;
+	margin-bottom: 20px;
+}
+
+#chat-form {
+	display: flex;
+	align-items: center;
+	width: 80%;
+}
+
+#chat-input {
+	flex-grow: 1;
+	padding: 10px;
+	border-radius: 15px 0 0 15px;
+	border: 0;
+	background-color: rgba(0, 0, 0, 0.3);
+	color: white;
+	outline: none;
+}
+
+#chat-input:focus {
+	box-shadow: none;
+}
+
+#chat-form button {
+	border-radius: 0 15px 15px 0;
+	border: 0;
+	background-color: rgba(0, 0, 0, 0.3);
+	color: white;
+	cursor: pointer;
+	padding: 10px 15px;
+	outline: none;
+}
